@@ -14,4 +14,7 @@ class UserRegisterForm(UserCreationForm):
 class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = CustomUser
-        fields = ('username', 'email') #  здесь указаны поля, которые можно будет редактировать
+        fields = ('username', 'email')  # здесь указаны поля, которые можно будет редактировать
+
+
+

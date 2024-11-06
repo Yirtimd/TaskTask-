@@ -1,0 +1,52 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+  <h2>Список задач</h2>
+    <form method="get">
+    <label for="status">Статус:</label>
+    <select name="status" id="status">
+        <option value="">Все</option>
+        <option value="in_progress" {% if request.GET.status == "in_progress" %}selected{% endif %}>В процессе</option>
+        <option value="completed" {% if request.GET.status == "completed" %}selected{% endif %}>Завершено</option>
+    </select>
+
+    <label for="priority">Приоритет:</label>
+    <select name="priority" id="priority">
+        <option value="">Все</option>
+        <option value="high" {% if request.GET.priority == "high" %}selected{% endif %}>Высокий</option>
+        <option value="medium" {% if request.GET.priority == "medium" %}selected{% endif %}>Средний</option>
+        <option value="low" {% if request.GET.priority == "low" %}selected{% endif %}>Низкий</option>
+    </select>
+
+    <button type="submit">Фильтровать</button>
+
+        <label for="sort_by">Сортировать по:</label>
+        <select name="sort_by" id="sort_by">
+            <option value="">Без сортировки</option>
+            <option value="created_at">Дата создания</option>
+            <option value="priority">Приоритет</option>
+        </select>
+
+    <button type="submit">Применить</button>
+    </form>
+
+  <ul>
+    {% for task in tasks %}
+      <li class="task {% if task.is_completed %}completed{% endif %}">
+        {{ task.title }} - {% if task.is_completed %} Выполнена {% else %} Не выполнена {% endif %}
+        <a href="{% url 'tasks:task_edit' task.pk %}">Редактировать</a>
+        <a href="{% url 'tasks:task_delete' task.pk %}">Удалить</a>
+      </li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'tasks:task_create' %}">Создать задачу</a>
+{% endblock %}
+
+
+
+
+
+
+
+
+

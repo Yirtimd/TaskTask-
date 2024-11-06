@@ -51,11 +51,20 @@ def edit_profile(request):
         form = CustomUserChangeForm(request.POST, instance=request.user)
         if form.is_valid():
             form.save()
-            return redirect('profile') #  перенаправляем на страницу профиля после сохранения
+            return redirect('profile') # перенаправляем на страницу профиля после сохранения
     else:
         form = CustomUserChangeForm(instance=request.user)
 
     return render(request, 'users/edit_profile.html', {'form': form})
+
+
+
+
+
+
+
+
+
 
 
 

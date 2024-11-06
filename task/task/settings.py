@@ -37,6 +37,7 @@ LOGOUT_REDIRECT_URL = 'login'  # URL, на который перенаправл
 # Application definition
 
 INSTALLED_APPS = [
+    'tasks',
     'users',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -122,7 +123,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
+# Включаем поддержку статичных файлов
+STATIC_URL = '/static/'
+
+# Указываем директорию для статичных файлов
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',  # Убедитесь, что эта строка присутствует и правильно указывает на вашу папку static
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

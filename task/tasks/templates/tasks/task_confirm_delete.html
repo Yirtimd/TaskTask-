@@ -1,0 +1,7 @@
+<!-- tasks/task_confirm_delete.html -->
+<h2>Are you sure you want to delete "{{ task.title }}"?</h2>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Yes, delete</button>
+    <a href="{% url 'tasks:task_list' %}">Cancel</a>
+</form>
