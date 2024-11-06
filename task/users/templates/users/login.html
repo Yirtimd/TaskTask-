@@ -1,0 +1,20 @@
+{% if messages %}
+  {% for message in messages %}
+    <div class="alert {{ message.tags }}">{{ message }}</div>
+  {% endfor %}
+{% endif %}
+
+<h2>Вход</h2>  <!-- Заголовок страницы -->
+<form method="post">  <!-- Форма для ввода данных с методом POST -->
+    {% csrf_token %}  <!-- Токен CSRF для защиты от подделки запросов -->
+    <div>
+        <label for="username">Имя пользователя:</label>  <!-- Метка для поля ввода имени пользователя -->
+        <input type="text" id="username" name="username" required>  <!-- Поле для ввода имени пользователя -->
+    </div>
+    <div>
+        <label for="password">Пароль:</label>  <!-- Метка для поля ввода пароля -->
+        <input type="password" id="password" name="password" required>  <!-- Поле для ввода пароля -->
+    </div>
+    <button type="submit">Войти</button>  <!-- Кнопка для отправки формы -->
+</form>
+
